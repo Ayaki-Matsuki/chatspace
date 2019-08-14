@@ -1,0 +1,36 @@
+.chatspace
+  .chat-side
+    .chat-user
+      .chat-user__name
+        Matsuki
+      .chat-user__icon
+        .chat-user__icon__group
+          =fa_icon 'edit'
+        .chat-user__icon__user
+          =fa_icon 'cog'
+    .chat-group
+      .menu
+        =render "layouts/menu"
+  .chat-main
+    .chat-header
+      .chat-header__left
+        .chat-header__left__user
+          Matsuki
+        .chat-header__left__group
+          Member：ayaki kazuki
+      .chat-header__right
+        Edit
+    .chat-body
+      .view
+        =render "view"
+    .chat-footer
+      .chat-footer__messageform
+        .chat-footer__messageform__text
+          %textarea{placeholder:'type a message'}
+        .chat-footer__messageform__image
+          %form 
+            %label
+              = fa_icon "image"
+              %input{type: "file", class: "filesend"}
+      .chat-footer__send
+        Send
