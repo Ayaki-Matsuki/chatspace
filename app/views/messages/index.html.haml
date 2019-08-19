@@ -1,38 +1,4 @@
 .chatspace
-  .chat-side
-    .chat-user
-      .chat-user__name
-        =current_user.name
-      .chat-user__icon
-        .chat-user__icon__left
-          =link_to do
-            =fa_icon 'edit', class: 'chat-user__icon--group'
-        .chat-user__icon__right
-          =link_to edit_user_path(current_user) do
-            =fa_icon 'cog', class: 'chat-user__icon--user'
-    .chat-group
-      .menu
-        =render "layouts/menu"
-  .chat-main
-    .chat-header
-      .chat-header__left
-        .chat-header__left__user
-          Matsuki
-        .chat-header__left__group
-          Member：ayaki kazuki
-      .chat-header__right
-        Edit
-    .chat-body
-      .view
-        =render "view"
-    .chat-footer
-      .chat-footer__messageform
-        .chat-footer__messageform__text
-          %textarea{placeholder:'type a message'}
-        .chat-footer__messageform__image
-          %form 
-            %label
-              = fa_icon "image"
-              %input{type: "file", class: "filesend"}
-      .chat-footer__send
-        Send
+  =render "main"
+  =render "side_bar"
+  

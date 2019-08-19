@@ -1,113 +1,111 @@
-.chatspace{
-  width: 100vw;
-  height: 100vh;
-}
-
 .chat-main{
-  position: relative;
-  height: 100vh;
-  width: calc(100vw - 300px);
   float: right;
-}
+  width: calc(100% - 300px);
+  height: 100vh;
 
-.chat-header{
-  height: 100px;
-  border-bottom: thin solid $gray;
-  padding: 0 40px;
-  &__left{
-    float: left;
-    padding-top: 35px;
-    &__user{
-      padding-bottom: 15px;
-      color: $font_user_color;
-      font-size: 20px;
+  .chat-header{
+    height: 100px;
+    border-bottom: thin solid $gray;
+    padding: 0 40px;
+    box-sizing: border-box;
+    &__left{
+      float: left;
+      &__user{
+        margin-top: 35px; 
+        padding-bottom: 15px;
+        color: $font_user_color;
+        font-size: 20px;
+      }
+      &__group{
+        color: $font_group_color;
+        font-size: 12px;
+      }
+    }  
+    &__right{
+      float: right;
+      margin: 28px 0; 
+      padding: 0 20px;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid $light_blue;
+      color: $light_blue;
+      text-decoration: none;
     }
-    &__group{
-      color: $font_group_color;
-      font-size: 12px;
-    }
-  } 
-  &__right{
-    float: right;
-    margin: 28px 0; 
-    padding: 0 20px;
-    line-height: 40px;
-    text-align: center;
-    border: 1px solid $light_blue;
-    color: $light_blue;
   }
-}
 
-.chat-body{
-  overflow: scroll;
-  background-color: #fafafa;
-  height: calc(100vh - 100px - 120px);
-  padding-top: 46px;
-  padding-left: 40px;
-  &__header{
-    display: flex;
-  }
-    &__name{
-      font-size: 16px;
-      font-weight: bold;
+  .chat-body{
+    overflow: scroll;
+    box-sizing: border-box;
+    background-color: #fafafa;
+    height: calc(100% - 100px - 90px);
+    padding-top: 46px;
+    padding-left: 40px;
+    &__header{
+      display: flex;
+    }
+      &__name{
+        font-size: 16px;
+        font-weight: bold;
+        color: $font_chat_color;
+        padding-right: 10px;
+    }
+      &__time{
+        font-size: 12px;
+        color: $font_group_color;
+    }
+    &__message{
+      padding-top: 10px;
+      padding-bottom: 40px;
       color: $font_chat_color;
-      padding-right: 10px;
+      font-size: 14px;
+    }
   }
-    &__time{
-      font-size: 12px;
-      color: $font_group_color;
-  }
-  &__message{
-    padding-top: 10px;
-    padding-bottom: 40px;
-    color: $font_chat_color;
-    font-size: 14px;
-  }
-}
 
-.chat-footer{
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 20px 40px;
-  padding-bottom: 14px;
-  background-color: #e1e1e1;
-  &__messageform{
-    position: relative;
-    float: left;
-    &__text{
-      textarea{
-        width:  calc(100vw - 500px);
-        background-color: $white;
-        box-sizing: border-box;
-        padding: 0 10px;
+  .chat-footer{
+    padding: 20px 40px;
+    background-color: #e1e1e1;
+    box-sizing: border-box;
+    height: 90px;
+    &__messageform{
+      width: calc(100% - 120px);
+      height: 50px;
+      float: left;
+      position: relative;
+      &__text{
+        textarea{
+          background-color: $white;
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0 10px;
+          height: 50px;
+          line-height: 50px;
+          border: none;
+          resize: none;
+        }
+      }
+      &__image{
+        position: absolute;
+        right: 20px;
+        bottom: 0px;
         height: 50px;
+        float: left;
+        font-size: 20px;
         line-height: 50px;
-        border: none;
-        resize: none;
+        box-sizing: border-box;
+        .filesend {
+         display: none;
+        }
       }
     }
-    &__image{
-      font-size: 20px;
-      position: absolute;
-      right: 10px;
-      bottom: 15px;
-      line-height: 30px;
-      box-sizing: border-box;
-       .filesend {
-        display: none;
-      }
+    &__send{
+      float: right;
+      margin-left: 15px;
+      padding: 0 30px;
+      line-height: 50px;
+      background-color: $light_blue;
+      font-size: 16px;
+      text-align: center;
+      color: $white;
     }
-  }
-  &__send{
-    display: inline-block;
-    margin-left: 15px;
-    padding: 0 30px;
-    line-height: 50px;
-    background-color: $light_blue;
-    font-size: 16px;
-    text-align: center;
-    color: $white;
   }
 }
