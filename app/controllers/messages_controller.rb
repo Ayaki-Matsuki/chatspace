@@ -1,7 +1,10 @@
 class MessagesController < ApplicationController
-  before_action :set_group
+  before_action :set_group, only: [:index]
 
   def index
+  end
+
+  def create
   end
 
   private 
@@ -14,3 +17,5 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
   end
 end
+
+
