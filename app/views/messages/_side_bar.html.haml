@@ -11,9 +11,8 @@
           =fa_icon 'cog', class: 'chat-user__icon--user'
   .chat-group
     - current_user.groups.each do |group|
-      .group
-        = link_to group_messages_path(group) do
-          .chat-group__name
-            = group.name
-          .chat-group__messages
-            メッセージはまだないよ！
+      = link_to group_messages_path(group) do
+        .chat-group__name
+          = group.name
+        .chat-group__messages
+          = group.show_last_message
