@@ -17,13 +17,10 @@
       .chat-body__message
         Hello!
   .chat-footer
-    .chat-footer__messageform
-      .chat-footer__messageform__text
-        %textarea{placeholder:'type a message'}
-      .chat-footer__messageform__image
-        %form 
-          %label
-            = fa_icon "image"
-            %input{type: "file", class: "filesend"}
-    .chat-footer__send
-      Send
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'chat-footer__message', placeholder: 'type a message'
+      .chat-footer__mask
+        = f.label :image, class: 'chat-footer__mask__image' do
+          = fa_icon 'image'
+          = f.file_field :image, class: "filesend"
+      = f.submit 'Send', class: "chat-footer__send"
