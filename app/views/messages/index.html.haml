@@ -11,13 +11,7 @@
       .chat-header__right
         = link_to "Edit", edit_group_path(@group)
     .chat-body
-      .chat-body__header
-        .chat-body__name
-          name
-        .chat-body__time
-          time
-      .chat-body__message
-        おはよう！
+      = render @messages
     .chat-footer
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'chat-footer__message', placeholder: 'type a message'
@@ -26,4 +20,4 @@
             = fa_icon 'image'
             = f.file_field :image, class: "filesend"
         = f.submit 'Send', class: "chat-footer__send"
-  =render "side_bar"
+  = render "side_bar"

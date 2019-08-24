@@ -1,25 +1,9 @@
-//.chat-main
-//  .chat-header
-//    .chat-header__left
-//      .chat-header__left__user
-//        name
-//      .chat-header__left__group
-//        Members：ayaki kazuki
-//    .chat-header__right
-//      = link_to "Edit", edit_group_path(@group)
-//  .chat-body
-//    .chat-body__header
-//      .chat-body__name
-//        name
-//      .chat-body__time
-//        time
-//    .chat-body__message
-//      おはよう
-//  .chat-footer
-//    = form_for [@group, @message] do |f|
-//      = f.text_field :content, class: 'chat-footer__message', placeholder: 'type a message'
-//      .chat-footer__mask
-//        = f.label :image, class: 'chat-footer__mask__image' do
-//          = fa_icon 'image'
-//          = f.file_field :image, class: "filesend"
-//      = f.submit 'Send', class: "chat-footer__send"
+.chat-body__header
+  .chat-body__name
+    = message.user.name
+  .chat-body__time
+    = message.created_at.strftime("%Y/%m/%d %H:%M")
+.chat-body__message
+  - if message.content.present?
+    = message.content
+  = image_tag message.image.url, class: 'chat-body__message__image' if message.image.present?
