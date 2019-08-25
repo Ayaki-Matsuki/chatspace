@@ -1,4 +1,5 @@
 .chatspace
+  = render "side_bar"
   .chat-main
     .chat-header
       .chat-header__left
@@ -13,11 +14,11 @@
     .chat-body
       = render @messages
     .chat-footer
-      = form_for [@group, @message] do |f|
+      =form_for [@group, @message] do |f|
         = f.text_field :content, class: 'chat-footer__message', placeholder: 'type a message'
         .chat-footer__mask
           = f.label :image, class: 'chat-footer__mask__image' do
             = fa_icon 'image'
-            = f.file_field :image, class: "filesend"
-        = f.submit 'Send', class: "chat-footer__send"
-  = render "side_bar"
+            = f.file_field :image, class: 'filesend'
+        = f.submit "Send", class: 'chat-footer__send'
+  
