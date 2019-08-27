@@ -28,7 +28,6 @@
       line-height: 40px;
       text-align: center;
       border: 1px solid $light_blue;
-      color: $light_blue;
       text-decoration: none;
     }
   }
@@ -55,9 +54,11 @@
       }
     &__message{
       padding-top: 10px;
-      padding-bottom: 40px;
-      color: $font_chat_color;
-      font-size: 14px;
+      &__content{
+        padding-bottom: 40px;
+        color: $font_chat_color;
+        font-size: 14px;
+      }
     }
   }
 
