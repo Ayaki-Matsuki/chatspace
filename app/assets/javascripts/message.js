@@ -11,5 +11,13 @@ $(function(){
       processData: false,
       contentType: false
     })
+    .done(function(data){
+       var html = buildHTML(data);
+       $('.chat-body__message').append(html);
+       $('#message_content').val();
+    })
+    .fail(function(data){
+      alert("エラーが発生したため送信できなかったよ！！");
+    })
   })
 })
