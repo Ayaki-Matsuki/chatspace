@@ -1,6 +1,7 @@
 $(function(){
   
   function  buildHTML(message){
+    image = (image.message) ? `<img class='lower-message__image' src=${message.image} >`: "";
     var html = `<div class="chat-body__header">
                   <div class="chat-body__name">
                     ${message.user_name}
@@ -13,6 +14,7 @@ $(function(){
                   <div class="chat-body__message__content">
                     ${message.content}
                   </div>
+                  ${image}
                 </div>`
     return html
   }
