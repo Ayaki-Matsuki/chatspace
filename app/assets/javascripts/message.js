@@ -39,12 +39,14 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.chat-body__message').append(html);
-      $('#message_content').val();
+      $('#message_content').val('');
       ScrollToNewMessage();
-      
     })
     .fail(function(data){
       alert("エラーが発生したため送信できなかったよ！！");
+    })
+    .always(function(data){
+      $('.chat-footer__send').prop('disabled', false);
     })
   })
 })
