@@ -13,11 +13,12 @@ $(function(){
                   <div class="chat-body__message__content">
                     ${message.content}
                   </div>
-                  ${message.image}
                 </div>`
     return html
   }
-
+  function ScrollToNewMessage(){
+    $('.chat-body').animate({scrollTop: $('.chat-body')[0].scrollHeight}, 'fast');
+  }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this); 
@@ -31,9 +32,10 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-       var html = buildHTML(data);
-       $('.chat-body__message').append(html);
-       $('#message_content').val();
+      var html = buildHTML(data);
+      $('.chat-body__message').append(html);
+      $('#message_content').val();
+      ScrollToNewMessage();
     })
     .fail(function(data){
       alert("エラーが発生したため送信できなかったよ！！");
