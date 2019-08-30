@@ -1,27 +1,26 @@
 $(function(){
   
   function  buildHTML(message){
-    var content = message.content ? `${ message.content }` : "";
-    image = message.image ? `<img class='lower-message__image' src=${message.image} >`: "";
-    var html = `<div class='chat-body>
-                  <div class="chat-body__header">
-                    <div class="chat-body__name">
-                      ${message.user_name}
+    image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >`: "";
+    var html =  ` <div class="chat-body__box">
+                    <div class="chat-body__box__header">
+                      <div class="chat-body__box__header__name">
+                        ${message.user_name}
+                      </div>
+                      <div class="chat-body__box__header__time">
+                        ${message.data}
+                      </div>
                     </div>
-                    <div class="chat-body__time">
-                      ${message.data}
+                    <div class="chat-body__box__message">
+                      <div class="chat-body__box__message__content">
+                        ${message.content}
+                      </div>
                     </div>
-                  </div>
-                  <div class="chat-body__message">
-                    <div class="chat-body__message__content">
-                      ${content}
-                    </div>
-                  </div>
                     ${image}
-                </div>`
+                  </div>`
     return html
   }
-  function ScrollToNewMessage(){
+   function ScrollToNewMessage(){
     $('.chat-body').animate({scrollTop: $('.chat-body')[0].scrollHeight}, 'fast');
   }
   $('#new_message').on('submit', function(e){
@@ -38,15 +37,13 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.chat-body__message').append(html);
+      $('.chat-body').append(html);
       $('#message_content').val('');
       ScrollToNewMessage();
+      $('.chat-footer__send').prop('disabled', false);
     })
     .fail(function(data){
       alert("エラーが発生したため送信できなかったよ！！");
-    })
-    .always(function(data){
-      $('.chat-footer__send').prop('disabled', false);
     })
   })
 })
