@@ -1,20 +1,23 @@
 $(function(){
   
   function  buildHTML(message){
-    image = (image.message) ? `<img class='lower-message__image' src=${message.image} >`: "";
-    var html = `<div class="chat-body__header">
-                  <div class="chat-body__name">
-                    ${message.user_name}
+    var content = message.content ? `${ message.content }` : "";
+    image = message.image ? `<img class='lower-message__image' src=${message.image} >`: "";
+    var html = `<div class='chat-body>
+                  <div class="chat-body__header">
+                    <div class="chat-body__name">
+                      ${message.user_name}
+                    </div>
+                    <div class="chat-body__time">
+                      ${message.data}
+                    </div>
                   </div>
-                  <div class="chat-body__time">
-                    ${message.data}
+                  <div class="chat-body__message">
+                    <div class="chat-body__message__content">
+                      ${content}
+                    </div>
                   </div>
-                </div>
-                <div class="chat-body__message">
-                  <div class="chat-body__message__content">
-                    ${message.content}
-                  </div>
-                  ${image}
+                    ${image}
                 </div>`
     return html
   }
@@ -38,6 +41,7 @@ $(function(){
       $('.chat-body__message').append(html);
       $('#message_content').val();
       ScrollToNewMessage();
+      
     })
     .fail(function(data){
       alert("エラーが発生したため送信できなかったよ！！");
