@@ -1,4 +1,23 @@
 $(function(){
+  
+  function  buildHTML(message){
+    var html = `<div class="chat-body__header">
+                  <div class="chat-body__name">
+                    ${message.user_name}
+                  </div>
+                  <div class="chat-body__time">
+                    ${message.data}
+                  </div>
+                </div>
+                <div class="chat-body__message">
+                  <div class="chat-body__message__content">
+                    ${message.content}
+                  </div>
+                  ${message.image}
+                </div>`
+    return html
+  }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this); 
