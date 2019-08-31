@@ -38,7 +38,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.chat-body').append(html);
-      $('#message_content').val('');
+      $('#new_message')[0].reset();
       ScrollToNewMessage();
       $('.chat-footer__send').prop('disabled', false);
     })
