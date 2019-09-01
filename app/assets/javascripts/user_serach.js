@@ -9,5 +9,24 @@ $(function() {
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     
+    $.ajax({
+      url: '/users',
+      type: "GET",
+      data: { keyword: input },
+      dataType: 'json'
+    })
+    .done(function(users){
+      $('#user-search-result').empty();
+      if (users.length !==0)
+        users.forEach(function(user){
+          searchUser(user);
+          var html = searchUser(user);
+          $('#user-search-result').append(html)
+        })
+    })
+    .fail(function(){
+      alert("検索に失敗したよ！！")
+    })
+
   })
 })
