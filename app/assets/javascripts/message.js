@@ -1,14 +1,14 @@
 $(function(){
   
   function  buildHTML(message){
-    image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >`: "";
+    image = (message.image.url) ? `<img class= "lower-message__image" src=${message.image} >`: "";
     var html =  ` <div class="chat-body__box" data-message-id="${message.id}">
                     <div class="chat-body__box__header">
                       <div class="chat-body__box__header__name">
                         ${message.user_name}
                       </div>
                       <div class="chat-body__box__header__time">
-                        ${message.date}
+                        ${message.created_at}
                       </div>
                     </div>
                     <div class="chat-body__box__message">
@@ -56,7 +56,10 @@ $(function(){
       data: {id: last_message_id}
     })
     .done(function(messages) {
-      console.log('success');
+      messages.forEach(function (message){
+        insertHTML = buildHTML(message);
+        $('.chat-body__box').append(insertHTML);
+      })
     })
     .fail(function() {
       console.log('error');
