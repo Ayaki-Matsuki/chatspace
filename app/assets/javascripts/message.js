@@ -1,7 +1,7 @@
 $(function(){
   
   function  buildHTML(message){
-    image = (message.image.url) ? `<img class= "lower-message__image" src=${message.image} >`: "";
+    image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >`: "";
     var html =  ` <div class="chat-body__box" data-message-id="${message.id}">
                     <div class="chat-body__box__header">
                       <div class="chat-body__box__header__name">
@@ -49,7 +49,7 @@ $(function(){
 
   var reloadMessages = function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      last_message_id = $('.chat-body__box:last').data("message-id")
+      last_message_id = $('.chat-body__box:last').data("message-id");
       $.ajax({
         url: 'api/messages',
         type: 'GET',
@@ -57,13 +57,15 @@ $(function(){
         data: {id: last_message_id}
       })
       .done(function(messages) {
+        var insertHTML = '';
         messages.forEach(function (message){
           insertHTML = buildHTML(message);
-          $('.chat-body__box').append(insertHTML);
+          $('.chat-body').append(insertHTML);
         })
+        $('.chat-body').animate({scrollTop: $('.chat-body')[0].scrollHeight}, 'fast');
       })
       .fail(function() {
-        console.log('error');
+        alert("自動更新に失敗しました");
       });
     }
   };
