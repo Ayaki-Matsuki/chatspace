@@ -2,7 +2,7 @@ $(function(){
   
   function  buildHTML(message){
     image = (message.image) ? `<img class= "lower-message__image" src=${message.image} >`: "";
-    var html =  ` <div class="chat-body__box">
+    var html =  ` <div class="chat-body__box" data-message-id="${message.id}">
                     <div class="chat-body__box__header">
                       <div class="chat-body__box__header__name">
                         ${message.user_name}
@@ -46,4 +46,20 @@ $(function(){
       alert("エラーが発生したため送信できなかったよ！！");
     })
   })
+
+  var reloadMessages = function() {
+    last_message_id = $('.chat-body__box:last').data("message-id")
+    $.ajax({
+      url: 'api/messages',
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      console.log('success');
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
 })
