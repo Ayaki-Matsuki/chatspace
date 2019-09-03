@@ -48,21 +48,24 @@ $(function(){
   })
 
   var reloadMessages = function() {
-    last_message_id = $('.chat-body__box:last').data("message-id")
-    $.ajax({
-      url: 'api/messages',
-      type: 'GET',
-      dataType: 'json',
-      data: {id: last_message_id}
-    })
-    .done(function(messages) {
-      messages.forEach(function (message){
-        insertHTML = buildHTML(message);
-        $('.chat-body__box').append(insertHTML);
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      last_message_id = $('.chat-body__box:last').data("message-id")
+      $.ajax({
+        url: 'api/messages',
+        type: 'GET',
+        dataType: 'json',
+        data: {id: last_message_id}
       })
-    })
-    .fail(function() {
-      console.log('error');
-    });
+      .done(function(messages) {
+        messages.forEach(function (message){
+          insertHTML = buildHTML(message);
+          $('.chat-body__box').append(insertHTML);
+        })
+      })
+      .fail(function() {
+        console.log('error');
+      });
+    }
   };
-})
+  setInterval(reloadMessages, 5000);
+});
