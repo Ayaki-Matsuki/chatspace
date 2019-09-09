@@ -4,7 +4,7 @@
       =current_user.name
     .chat-user__icon
       .chat-user__icon__left
-        =link_to new_group_path do
+        =link_to new_group_path, data:{"turbolinks" => false} do
           =fa_icon 'edit', class: 'chat-user__icon--group'
       .chat-user__icon__right
         =link_to edit_user_path(current_user) do
