@@ -68,6 +68,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+gem 'jquery-turbolinks'
 
 group :production do
   gem 'unicorn', '5.4.1'

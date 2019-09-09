@@ -10,7 +10,7 @@
           - @group.users.each do |user|
             = user.name
       .chat-header__right
-        = link_to "Edit", edit_group_path(@group)
+        = link_to "Edit", edit_group_path(@group), data:{"turbolinks" => false}
     .chat-body
       = render @messages
     .chat-footer
