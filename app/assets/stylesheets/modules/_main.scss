@@ -29,6 +29,10 @@
       text-align: center;
       border: 1px solid $light_blue;
       text-decoration: none;
+
+      .border-none{
+        text-decoration: none;
+      }
     }
   }
 

@@ -36,6 +36,9 @@
     padding-left: 20px; 
     padding-top: 20px;
     box-sizing: border-box;
+    .border-none{
+      text-decoration: none;
+    }
     &__name{
       color: $white;
       font-size: 15px;
