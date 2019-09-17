@@ -6,6 +6,16 @@ $(function() {
                 </div>`
     return html
   }
+
+  function noUser(message){
+    var html = `<div class="chat-group-user clearfix">
+                  <p class="group-user__name">
+                  ${message}
+                  </p>
+                </div>`
+    return html
+  }
+
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     
@@ -23,6 +33,10 @@ $(function() {
           var html = searchUser(user);
           $('#user-search-result').append(html)
         })
+        else {
+          var html = noUser("一致するメンバーがいません");
+          $('#user-search-result').append(html)
+        }
     })
     .fail(function(){
       alert("検索に失敗したよ！！")
