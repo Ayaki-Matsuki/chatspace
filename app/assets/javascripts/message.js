@@ -61,8 +61,9 @@ $(function(){
         messages.forEach(function (message){
           insertHTML = buildHTML(message);
           $('.chat-body').append(insertHTML);
+          $('.chat-body').animate({scrollTop: $('.chat-body')[0].scrollHeight}, 'fast');
         })
-        $('.chat-body').animate({scrollTop: $('.chat-body')[0].scrollHeight}, 'fast');
+        
       })
       .fail(function() {
         alert("自動更新に失敗しました");
